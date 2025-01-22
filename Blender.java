@@ -7,18 +7,10 @@ public class Blender {
     }
 
     void Fill(boolean fill) {
-        if (fill = false) {
-            fill = true;
-        } else {
-            fill = true;
-        }
+        this.fill = true;
     }
 
     void Empty(boolean fill) {
-        if (fill = true) {
-            fill = false;
-        } else {
-            fill = false;
-        }
+        this.fill = false;
     }
 }
