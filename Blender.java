@@ -10,11 +10,15 @@ public class Blender {
         if (fill = false) {
             fill = true;
         } else {
-            fill = false;
+            fill = true;
         }
     }
 
-    void Empty() {
-
+    void Empty(boolean fill) {
+        if (fill = true) {
+            fill = false;
+        } else {
+            fill = false;
+        }
     }
 }
