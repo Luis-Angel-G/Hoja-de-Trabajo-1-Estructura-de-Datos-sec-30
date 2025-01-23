@@ -1,16 +1,29 @@
-public class Blender {
-    int speed;
-    boolean fill;
+public class Blender implements IBlender {
+    private int speed = 0;
+    private boolean fill = false;
 
-    int GetSpeed() {
+    @Override
+    public int GetSpeed() {
         return speed;
     }
-
-    void Fill(boolean fill) {
+    
+    @Override
+    public void Fill() {
         this.fill = true;
     }
 
-    void Empty(boolean fill) {
+    @Override
+    public void Empty() {
         this.fill = false;
+    }
+
+    @Override
+    public void SpeedUp() {
+        speed += 1;
+    }
+
+    @Override
+    public void SpeedDown() {
+        speed += 1;
     }
 }
