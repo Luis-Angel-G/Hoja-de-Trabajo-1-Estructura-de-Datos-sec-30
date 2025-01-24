@@ -11,7 +11,7 @@ public class Main {
         while (continuar) {
             System.out.println("-------------------------- Menu: --------------------------------");
             System.out.println("1. Agregar ingredientes");
-            System.out.println("2. Verificar si la licuadora esta llena");
+            System.out.println("2. Verificar si la licuadora tiene ingredientes");
             System.out.println("3. Aumentar velocidad");
             System.out.println("4. Disminuir velocidad");
             System.out.println("5. Verificar velocidad");
@@ -31,49 +31,66 @@ public class Main {
 
             switch (opcion) {
                 case 1:
-                    if (blender.IsFull()){
-                        System.out.println("La licuadora se encuentra llena y no se le puede agregar más ingredientes.\n");
+                    if (blender.getIngredientCount() >= 5){
+                        System.out.println("La licuadora se encuentra llena y no se le puede agregar mas ingredientes.\n");
                     } else {
                         System.out.print("Ingrese el nuevo ingrediente que desea agregar: ");
                         String ingredient = scanner.nextLine();
                         blender.addIngredient(ingredient);
                         System.out.println("Ingrediente agregado: " + ingredient);
-                        System.out.println("Número de ingredientes que has añadido: " + blender.getIngredientCount());
+                        System.out.println("Numero de ingredientes que has añadido: " + blender.getIngredientCount() + "\n");
+                        blender.Fill();
                     }
                     break;
 
                 case 2:
                     if (blender.IsFull()) {
-                        System.out.println("La licuadora está llena.");
+                        System.out.println("La licuadora tiene ingredientes.\n");
                     } else {
-                        System.out.println("La licuadora no está llena.");
+                        System.out.println("La licuadora no tiene ingredientes.\n");
                     }
-                break;
+                    break;
 
                 case 3:
-                if (!blender.IsFull()) { 
-                    System.out.println("No se puede aumentar la velocidad si la licuadora está vacía.");
-                } else {
-                    blender.SpeedUp(); 
-                    System.out.println("Velocidad aumentada a: " + blender.GetSpeed());
-                }
-                break;
+                    if (!blender.IsFull()) { 
+                        System.out.println("No se puede aumentar la velocidad si la licuadora esta vacia.\n");
+                    } else {
+                        if (blender.GetSpeed() < 10) {
+                            blender.SpeedUp(); 
+                            System.out.println("Velocidad aumentada\n");
+                        } else {
+                            System.out.println("No se puede aumentar la velocidad porque ya esta en 10.\n");
+                        }
+                    }
+                    break;
             
-            case 4: 
-                blender.SpeedDown();
-                System.out.println("Velocidad disminuida a: " + blender.GetSpeed());
-                break;
+                case 4: 
+                    if (!blender.IsFull()) { 
+                        System.out.println("No se puede disminuir la velocidad si la licuadora esta vacia.\n");
+                    } else {
+                        if (blender.GetSpeed() > 0) {
+                            blender.SpeedDown(); 
+                            System.out.println("Velocidad disminuida\n");
+                        } else {
+                            System.out.println("No se puede disminuir la velocidad porque ya esta en 0.\n");
+                        }
+                    }
+                    break;
 
                 case 5:
-                        System.out.println("La velocidad de tu licuadora es de: " + blender.GetSpeed()+ "\n");
+                    System.out.println("La velocidad de tu licuadora es de: " + blender.GetSpeed()+ "\n");
                     break;
 
                 case 6:
-                    if (blender.GetSpeed() > 0){
-                        System.out.println("No se puede vaciar la licuadora si esta en movimiento.\n");
+                    if (blender.IsFull()) {
+                        if (blender.GetSpeed() > 0){
+                            System.out.println("No se puede vaciar la licuadora si esta en movimiento.\n");
+                        } else {
+                            blender.Empty();
+                            System.out.println("La licuadora se ha vaciado con exito.\n");
+                        }
                     } else {
-                        blender.Empty();
-                        System.out.println("La licuadora se ha vaciado con éxito.");
+                        System.out.println("La licuadora ya se encuentra vacia.\n");
                     }
                     break;
 
