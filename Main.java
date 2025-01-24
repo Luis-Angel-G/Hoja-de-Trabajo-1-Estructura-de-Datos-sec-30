@@ -1,13 +1,31 @@
 import java.util.Scanner;
 
+/**
+* Clase principal para ejecutar el programa de la licuadora.
+* Gestiona la interacción con el usuario y las funcionalidades de la licuadora.
+* @Project : Hoja de trabajo 1
+* @author Luis Girón y Vernel Hernández
+* Creacion 22.01.2025
+* Ultima modificacion 23.01.2025
+* @File Name: Main.java
+*/
 public class Main {
+    /**
+     * Método principal que ejecuta el programa.
+     * 
+     * @param args Argumentos de línea de comandos (no utilizados).
+     */
     public static void main(String[] args) {
+
+        // Instancia inicial de la licuadora
         Blender blender = new Blender();
         Scanner scanner = new Scanner(System.in);
         boolean continuar = true;
 
+        // Mensaje inicial de bienvenida
         System.out.println("Bienvenido a Blender");
 
+        // Ciclo principal del programa mientras el programa se siga ejecutando
         while (continuar) {
             System.out.println("-------------------------- Menu: --------------------------------");
             System.out.println("1. Agregar ingredientes");
@@ -30,7 +48,7 @@ public class Main {
             }
 
             switch (opcion) {
-                case 1:
+                case 1: // Agregar ingredientes
                     if (blender.getIngredientCount() >= 5){
                         System.out.println("La licuadora se encuentra llena y no se le puede agregar mas ingredientes.\n");
                     } else {
@@ -43,7 +61,7 @@ public class Main {
                     }
                     break;
 
-                case 2:
+                case 2: // Verificar la capacidad de la licuadora
                     if (blender.IsFull()) {
                         System.out.println("La licuadora tiene ingredientes.\n");
                     } else {
@@ -51,7 +69,7 @@ public class Main {
                     }
                     break;
 
-                case 3:
+                case 3: // Aumentar la velocidad
                     if (!blender.IsFull()) { 
                         System.out.println("No se puede aumentar la velocidad si la licuadora esta vacia.\n");
                     } else {
@@ -64,7 +82,7 @@ public class Main {
                     }
                     break;
             
-                case 4: 
+                case 4: // Disminuir la velocidad
                     if (!blender.IsFull()) { 
                         System.out.println("No se puede disminuir la velocidad si la licuadora esta vacia.\n");
                     } else {
@@ -77,11 +95,11 @@ public class Main {
                     }
                     break;
 
-                case 5:
+                case 5: // Verificar velocidad
                     System.out.println("La velocidad de tu licuadora es de: " + blender.GetSpeed()+ "\n");
                     break;
 
-                case 6:
+                case 6: // Vaciar la licuadora
                     if (blender.IsFull()) {
                         if (blender.GetSpeed() > 0){
                             System.out.println("No se puede vaciar la licuadora si esta en movimiento.\n");
@@ -94,7 +112,7 @@ public class Main {
                     }
                     break;
 
-                case 7:
+                case 7: // Cerrar el programa
                     System.out.println("Cerrando programa\n");
                     continuar = false;
                     break;
