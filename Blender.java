@@ -17,18 +17,13 @@ public class Blender implements IBlender {
     
     @Override
     public void Fill() {
-        if (ingredients.size() >= LIMITE) {
             isFull = true;
-        }
     }
 
 
     public void addIngredient(String ingredient) {
-        if (!isFull) {
-            ingredients.push(ingredient); 
-            if (ingredients.size() >= LIMITE) {
-                isFull = true;
-            }
+        if (ingredients.size() < LIMITE) {
+            ingredients.push(ingredient);
         }
     }
 
@@ -40,9 +35,7 @@ public class Blender implements IBlender {
 
     @Override
     public void SpeedUp() {
-        if(isFull && speed < 9){
             speed += 1;
-        }
     }
 
     @Override
